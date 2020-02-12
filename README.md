@@ -51,6 +51,12 @@ Entware-ng 是一个适用于嵌入式系统的软件包库，使用 opkg 包管
 [在 LEDE 上使用 Entware](https://github.com/xzhih/ONMP/wiki/在-LEDE-上安装-Entware)
 
 [在梅林上使用 Entware](https://github.com/xzhih/ONMP/wiki/在梅林上安装-Entware)
+一键命令，复制->粘贴->回车
+
+```
+  $ sh -c "$(curl -kfsSl https://raw.githubusercontent.com/wgleiz/ONMP/master/entware-ngu-setup-SC_V3.0.Beta1.2018.6.25.001.sh)"
+```
+
 
 [在 Padavan 上使用 entware](https://github.com/xzhih/ONMP/wiki/在-Padavan-上安装-Entware)
 
