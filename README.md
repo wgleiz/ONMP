@@ -42,6 +42,25 @@ ONMP内置了以下程序的一键安装：
 
 ## 安装教程
 
+外置存储设备的文件系统支持 ext2、ext3、ext4、FAT(32)、NTFS、exFAT 格式。你可以在电脑上使用 Diskgenius 等软件格式化后挂载到设备上。
+  也可以用 df -T -h 命令查看已挂载存储设备的挂载路径(通常 Size 对应数据最大的就是外置大容量存储)，
+  在设备上使用命令格式化：
+```
+  umount /dev/sda1 && mkfs.ext2 /dev/sda1                            #将 /dev/sda1 格式化成 ext2 格式
+  umount /dev/sda1 && mkfs.ext3 /dev/sda1                            #将 /dev/sda1 格式化成 ext3 格式
+  umount /dev/sda1 && mkfs.ext4 /dev/sda1                            #将 /dev/sda1 格式化成 ext4 格式
+```
+
+
+重装 Entware-NG，只需要重新运行一次安装脚本即可，旧的环境会自动备份到你选择的挂载路径根目录下的 entware-old* 文件夹。重新运行脚本的末尾会提示你选择保留备份还是删除备份；
+    删除 Entware-NG。先卸载虚拟内存挂载的分页文件，然后删除你选择的挂载路径根目录下的 entware 文件夹即可；
+        不过，为了避免虚拟内存正在被占用导致无法卸载，可以先停用 Entware-NG 的所有服务，再卸载 Entware-NG 的虚拟内存命令：
+```
+  find / -name services-stop` 2>/dev/null               #停用 Entware-NG 的所有服务
+  swapoff /opt/swap                                        #卸载 Entware-NG 的虚拟内存
+```
+
+
 ### 1. 安装 Entware
 
 Entware-ng 是一个适用于嵌入式系统的软件包库，使用 opkg 包管理系统进行管理，现在在官方的源上已经有超过 2000 个软件包了，可以说是非常的丰富
