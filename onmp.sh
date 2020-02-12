@@ -437,6 +437,7 @@ init_sql()
     mkdir -p /opt/etc/mysql/
 
 # MySQL设置
+mkdir -p /opt/var/run/mysqld/
 cat > "/opt/etc/mysql/my.cnf" <<-\MMM
 [client-server]
 port               = 3306
