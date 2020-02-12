@@ -56,8 +56,8 @@ ONMP内置了以下程序的一键安装：
     删除 Entware-NG。先卸载虚拟内存挂载的分页文件，然后删除你选择的挂载路径根目录下的 entware 文件夹即可；
         不过，为了避免虚拟内存正在被占用导致无法卸载，可以先停用 Entware-NG 的所有服务，再卸载 Entware-NG 的虚拟内存命令：
 ```
-  find / -name services-stop` 2>/dev/null               #停用 Entware-NG 的所有服务
-  swapoff /opt/swap                                        #卸载 Entware-NG 的虚拟内存
+  . `find / -name services-stop` 2>/dev/null                #停用 Entware-NG 的所有服务
+  swapoff /opt/swap                                         #卸载 Entware-NG 的虚拟内存
 ```
 
 
