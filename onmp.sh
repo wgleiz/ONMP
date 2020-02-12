@@ -493,8 +493,8 @@ sleep 20
 sleep 60
 
 # 设置数据库密码
-mysqladmin -u root password 123456
-echo -e "\033[41;37m 数据库用户：root, 初始密码：123456 \033[0m"
+mysqladmin -u $username password 123456
+echo -e "\033[41;37m 数据库用户："$username", 初始密码：123456 \033[0m"
 onmp restart
 }
 
@@ -546,7 +546,7 @@ set_passwd()
     /opt/etc/init.d/S70mysqld start
     sleep 3
     echo -e "\033[41;37m 初始密码：123456 \033[0m"
-    mysqladmin -u root -p password
+    mysqladmin -u $username -p password
     onmp restart
 }
 
