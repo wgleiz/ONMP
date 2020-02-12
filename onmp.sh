@@ -435,9 +435,10 @@ init_sql()
     rm -rf /opt/mysql
     rm -rf /opt/var/mysql
     mkdir -p /opt/etc/mysql/
+    mkdir -p /opt/var/run/mysqld/
 
 # MySQL设置
-mkdir -p /opt/var/run/mysqld/
+
 cat > "/opt/etc/mysql/my.cnf" <<-\MMM
 [client-server]
 port               = 3306
@@ -496,7 +497,6 @@ sleep 60
 # 设置数据库密码
 mysqladmin -u $username password 123456
 echo -e "\033[41;37m 数据库用户："$username", 初始密码：123456 \033[0m"
-sleep 20
 
 # 设置外网登录
 echo -e "\n正在设置外网访问模式，请稍等1分钟"
