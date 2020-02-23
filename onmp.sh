@@ -18,7 +18,7 @@ phpmod="php7-mod-calendar php7-mod-ctype php7-mod-curl php7-mod-dom php7-mod-exi
 url_phpMyAdmin="https://files.phpmyadmin.net/phpMyAdmin/4.8.3/phpMyAdmin-4.8.3-all-languages.zip"
 
 # (2) WordPress（使用最广泛的CMS）
-url_WordPress="https://cn.wordpress.org/wordpress-4.9.4-zh_CN.zip"
+url_WordPress="https://cn.wordpress.org/latest-zh_CN.zip"
 
 # (3) Owncloud（经典的私有云）
 url_Owncloud="https://download.owncloud.org/community/owncloud-10.0.10.zip"
@@ -438,7 +438,7 @@ init_sql()
     mkdir -p /opt/var/run/mysqld/
 
 # MySQL设置
-
+echo -e "\nMySQL设置"
 cat > "/opt/etc/mysql/my.cnf" <<-\MMM
 [client-server]
 port               = 3306
@@ -486,25 +486,27 @@ chmod 644 /opt/etc/mysql/my.cnf
 mkdir -p /opt/var/mysql
 
 # 数据库安装
+echo -e "\n数据库安装。。。"
 /opt/bin/mysql_install_db --user=$username --basedir=/opt --datadir=/opt/var/mysql/
 echo -e "\n正在初始化数据库，请稍等1分钟"
 sleep 20
 
 # 初次启动MySQL
+echo -e "\n初次启动MySQL"
 /opt/etc/init.d/S70mysqld start
 sleep 60
 
 # 设置数据库密码
+echo -e "\n设置数据库密码"
 mysqladmin -u $username password 123456
 echo -e "\033[41;37m 数据库用户："$username", 初始密码：123456 \033[0m"
-
 # 设置外网登录
-echo -e "\033[41;37m 正在设置外网访问模式，需要手动输入以下代码 \033[0m"
-echo -e "\033[41;37m use mysql;\033[0m"
-echo -e "\033[41;37m GRANT ALL PRIVILEGES ON *.* TO '"$username"'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;\033[0m"
-echo -e "\033[41;37m flush privileges;\033[0m"
-echo -e "\033[41;37m quit\033[0m"
-mysql -u $username -p123456
+# echo -e "\033[41;37m 正在设置外网访问模式，需要手动输入以下代码 \033[0m"
+# echo -e "\033[41;37m use mysql;\033[0m"
+# echo -e "\033[41;37m GRANT ALL PRIVILEGES ON *.* TO '"$username"'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;\033[0m"
+# echo -e "\033[41;37m flush privileges;\033[0m"
+# echo -e "\033[41;37m quit\033[0m"
+# mysql -u $username -p123456
 onmp restart
 }
 
