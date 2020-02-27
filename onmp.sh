@@ -500,13 +500,6 @@ sleep 60
 echo -e "\n设置数据库密码"
 mysqladmin -u $username password 123456
 echo -e "\033[41;37m 数据库用户："$username", 初始密码：123456 \033[0m"
-# 设置外网登录
-# echo -e "\033[41;37m 正在设置外网访问模式，需要手动输入以下代码 \033[0m"
-# echo -e "\033[41;37m use mysql;\033[0m"
-# echo -e "\033[41;37m GRANT ALL PRIVILEGES ON *.* TO '"$username"'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;\033[0m"
-# echo -e "\033[41;37m flush privileges;\033[0m"
-# echo -e "\033[41;37m quit\033[0m"
-# mysql -u $username -p123456
 onmp restart
 }
 
